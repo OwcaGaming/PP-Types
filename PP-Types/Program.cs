@@ -14,21 +14,62 @@ string[] names = {
 // After last element should be ".".
 void PrintGroups(string[] t, int perLine)
 {
+    {
+        int count = t.Length;
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write(t[i]);
 
-    // Write required code.
+            if (i < count - 1)
+            {
+                Console.Write(", ");
+            }
+            else
+            {
+                Console.Write(".");
+            }
 
+
+            if ((i + 1) % perLine == 0 && i < count - 1)
+            {
+                Console.WriteLine();
+            }
+        }
+
+    }
 }
 
+    // Print all array elements in *perLine* columns.
+    // Each column must have given *width* (number of chars).
+    // Columns should be separated by "| ".
+    // If element is too long it should be trimmed.
 
-// Print all array elements in *perLine* columns.
-// Each column must have given *width* (number of chars).
-// Columns should be separated by "| ".
-// If element is too long it should be trimmed.
-
-void PrintColumns(string[] t, int perLine, int width)
+    void PrintColumns(string[] t, int perLine, int width)
 {
+    int count = t.Length;
+    for (int i = 0; i < count; i++)
+    {
+        string element;
 
-    // Write required code.
+        if (t[i].Length > width)
+        {
+            element = t[i].Substring(width);
+        }
+        else
+        {
+            element = t[i].PadRight(width);
+        }
+
+        Console.Write(element);
+        if ((i + 1) % perLine != 0 && i != count - 1)
+        {
+            Console.Write(" | ");
+        }
+        if ((i + 1) % perLine == 0 || i == count - 1)
+        {
+            Console.WriteLine();
+        }
+    }
 
 }
 
